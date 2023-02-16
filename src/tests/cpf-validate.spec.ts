@@ -23,4 +23,18 @@ describe('validate cpf format', () => {
         expect(isValidBigSizeCPF).toEqual(false)
         expect(isValidSmallSizeCPF).toEqual(false)
     })
+
+    it('should not be possible to create a masked cpf with incomplete mask', () => {
+        const cpf = '111.444777-05'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(false)
+    })
+
+    it('it should not be possible to create a masked cpf with misplaced characters', () => {
+        const cpf = '11.1444.7770-5'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(false)
+    })
 })
