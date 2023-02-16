@@ -31,24 +31,54 @@ describe('validate cpf format', () => {
         expect(isValidCPF).toEqual(false)
     })
 
-    it('it should not be possible to create a masked cpf with misplaced characters', () => {
+    it('should not be possible to create a masked cpf with misplaced characters', () => {
         const cpf = '11.1444.7770-5'
         const isValidCPF = validateCPF(cpf)
 
         expect(isValidCPF).toEqual(false)
     })
 
-    it('it should not be possible to create a masked cpf with invalid characters', () => {
+    it('should not be possible to create a masked cpf with invalid characters', () => {
         const cpf = '1b1.444.7a7-05'
         const isValidCPF = validateCPF(cpf)
 
         expect(isValidCPF).toEqual(false)
     })
 
-    it('it should not be possible to create a numeric cpf with invalid characters', () => {
+    it('should not be possible to create a numeric cpf with invalid characters', () => {
         const cpf = '1114c477705'
         const isValidCPF = validateCPF(cpf)
 
         expect(isValidCPF).toEqual(false)
+    })
+})
+
+describe('validate cpf algorithm', () => {
+    it('should not be possible to create a masked cpf that fails the algorithm', () => {
+        const cpf = '111.444.777-05'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(false)
+    })
+
+    it('should be possible to create a masked cpf if it succeeds in the algorithm', () => {
+        const cpf = '111.444.777-35'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(true)
+    })
+
+    it('should not be possible to create a numeric cpf that fails the algorithm', () => {
+        const cpf = '11144477705'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(false)
+    })
+
+    it('should be possible to create a numeric cpf if it succeeds in the algorithm', () => {
+        const cpf = '11144477735'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(true)
     })
 })
