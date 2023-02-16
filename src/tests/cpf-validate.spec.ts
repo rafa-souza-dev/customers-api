@@ -37,4 +37,18 @@ describe('validate cpf format', () => {
 
         expect(isValidCPF).toEqual(false)
     })
+
+    it('it should not be possible to create a masked cpf with invalid characters', () => {
+        const cpf = '1b1.444.7a7-05'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(false)
+    })
+
+    it('it should not be possible to create a numeric cpf with invalid characters', () => {
+        const cpf = '1114c477705'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(false)
+    })
 })
