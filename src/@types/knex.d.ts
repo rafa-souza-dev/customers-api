@@ -6,7 +6,7 @@ declare module 'knex/types/tables' {
       id: string
       name: string
       cpf: string
-      birth_date: string
+      birth_date: Date
     }
   }
 }
