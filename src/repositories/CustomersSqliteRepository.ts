@@ -1,5 +1,6 @@
 import { knex } from "../database/knex";
 import { Customer } from "../domain/Customer";
+import { applyCPFMask, getCPFDigits } from "../utils/cpf";
 import { ICustomersRepository } from "./ICustomersRepository";
 
 export class CustomersSqliteRepository implements ICustomersRepository {
@@ -13,10 +14,12 @@ export class CustomersSqliteRepository implements ICustomersRepository {
     }
 
     public async findByCPF(cpf: string): Promise<Customer | null> {
-        const findCustomer = await knex('customers').select('*')
-            .where('cpf', cpf).first()
-
-        
+        const findCustomer = await knex('customers')
+            .select('*')
+            .where('cpf', cpf)
+            .orWhere('cpf', getCPFDigits(cpf))
+            .orWhere('cpf', applyCPFMask(cpf))
+            .first()
 
         if (findCustomer) {
             const date = new Date(findCustomer.birth_date)
