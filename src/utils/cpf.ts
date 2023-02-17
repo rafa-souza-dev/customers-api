@@ -1,51 +1,42 @@
+export function getCPFDigits(cpf: string): string {
+    if (cpf.length === 14) {
+        return cpf.slice(0, 3) + cpf.slice(4, 7) + 
+            cpf.slice(8, 11) + cpf.slice(12)   
+    }
+
+    return cpf
+}
+
 function validateCPFFormat(cpf: string): boolean {
     const cpfHasInvalidLength = cpf.length !== 14 && cpf.length !== 11
 
     if (cpfHasInvalidLength) return false;
+
+    const cpfDigits = getCPFDigits(cpf)
+    const cpfDigitsArray = cpfDigits.split('')
 
     if (cpf.length === 14) {
         const cpfChars = cpf[3] + cpf[7] + cpf[11]
         const isInvalidCPFChars = cpfChars !== '..-'
 
         if (isInvalidCPFChars) return false
-
-        const cpfNumbers = cpf.slice(0, 3) + cpf.slice(4, 7) + 
-            cpf.slice(8, 11) + cpf.slice(12)
-
-        const cpfNumbersArray = cpfNumbers.split('')
-        const cpfHasCharInWrongPlace = cpfNumbersArray.some(number => {
-            return !Number(number) && number !== '0'
-        })
-
-        if (cpfHasCharInWrongPlace) return false
     }
 
-    if (cpf.length === 11) {
-        const cpfNumbersArray = cpf.split('')
+    const cpfHasCharInWrongPlace = cpfDigitsArray.some(number => {
+        return !Number(number) && number !== '0'
+    })
 
-        const cpfHasCharInWrongPlace = cpfNumbersArray.some(number => {
-            return !Number(number) && number !== '0'
-        })
-
-        if (cpfHasCharInWrongPlace) return false
-    }
+    if (cpfHasCharInWrongPlace) return false
 
     return true
 }
 
 function convertCPFToArray(cpf: string): number[] {
-    if (cpf.length === 14) {
-        const cpfNumbers = cpf.slice(0, 3) + cpf.slice(4, 7) + 
-            cpf.slice(8, 11) + cpf.slice(12)
+    const cpfDigits = getCPFDigits(cpf)
 
-        const cpfNumbersArray = cpfNumbers.split('')
-        
-        return cpfNumbersArray.map(number => Number(number))
-    }
+    const cpfDigitsArray = cpfDigits.split('')
 
-    const cpfNumbers = cpf.split('')
-
-    return cpfNumbers.map(number => Number(number))
+    return cpfDigitsArray.map(number => Number(number))
 }
 
 function verifyAlgorithmCpf(cpfNumbers: number[]): boolean {
