@@ -13,7 +13,9 @@ function validateCPFFormat(cpf: string): boolean {
             cpf.slice(8, 11) + cpf.slice(12)
 
         const cpfNumbersArray = cpfNumbers.split('')
-        const cpfHasCharInWrongPlace = cpfNumbersArray.some(number => !Number(number))
+        const cpfHasCharInWrongPlace = cpfNumbersArray.some(number => {
+            return !Number(number) && number !== '0'
+        })
 
         if (cpfHasCharInWrongPlace) return false
     }
@@ -21,7 +23,9 @@ function validateCPFFormat(cpf: string): boolean {
     if (cpf.length === 11) {
         const cpfNumbersArray = cpf.split('')
 
-        const cpfHasCharInWrongPlace = cpfNumbersArray.some(number => !Number(number))
+        const cpfHasCharInWrongPlace = cpfNumbersArray.some(number => {
+            return !Number(number) && number !== '0'
+        })
 
         if (cpfHasCharInWrongPlace) return false
     }
