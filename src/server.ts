@@ -1,12 +1,5 @@
-import fastify from "fastify";
-import { env } from "./env";
-import { customersRoutes } from "./routes/customers";
-
-const app = fastify()
-
-app.register(customersRoutes, {
-    prefix: '/customers'
-})
+import { app } from "./app"
+import { env } from "./env"
 
 app.listen({
     port: env.PORT
