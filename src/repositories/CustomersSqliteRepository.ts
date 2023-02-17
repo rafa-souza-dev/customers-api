@@ -31,4 +31,15 @@ export class CustomersSqliteRepository implements ICustomersRepository {
 
         return null
     }
+
+    public async findAll(): Promise<Customer[]> {
+        const customers = await knex('customers').select('*')
+
+        return customers.map(customer => new Customer(
+            customer.name,
+            customer.cpf,
+            customer.birth_date,
+            customer.id
+        ))
+    }
 }
