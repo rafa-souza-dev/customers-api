@@ -81,4 +81,18 @@ describe('validate cpf algorithm', () => {
 
         expect(isValidCPF).toEqual(true)
     })
+
+    it('should be possible to create a masked cpf if it succeeds in the algorithm with number 0', () => {
+        const cpf = '091.041.130-12'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(true)
+    })
+
+    it('should be possible to create a numeric cpf if it succeeds in the algorithm with number 0', () => {
+        const cpf = '355.049.880-20'
+        const isValidCPF = validateCPF(cpf)
+
+        expect(isValidCPF).toEqual(true)
+    })
 })
