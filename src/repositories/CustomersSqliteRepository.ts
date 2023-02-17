@@ -38,7 +38,7 @@ export class CustomersSqliteRepository implements ICustomersRepository {
         return customers.map(customer => new Customer(
             customer.name,
             customer.cpf,
-            customer.birth_date,
+            new Date(customer.birth_date),
             customer.id
         ))
     }
