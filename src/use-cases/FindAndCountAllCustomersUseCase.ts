@@ -8,7 +8,7 @@ export class FindAndCountAllCustomersUseCase {
         this.customerRepository = customerRepository
     }
 
-    public async handle(page: number = 1, limit: number = 10): Promise<{
+    public async handle(page: number, limit: number): Promise<{
         count: number
         results: Customer[]
     }> {
