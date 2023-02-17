@@ -1,4 +1,5 @@
 import fastify from "fastify";
+import { env } from "./env";
 import { customersRoutes } from "./routes/customers";
 
 const app = fastify()
@@ -8,7 +9,7 @@ app.register(customersRoutes, {
 })
 
 app.listen({
-    port: 8000
+    port: env.PORT
 }).then(() => {
     console.log("HTTP Server running...")
 })
