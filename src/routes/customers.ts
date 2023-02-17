@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { createCustomerController, findAllCustomersController, findCustomerByCPFController } from "../use-cases";
+import { createCustomerController, findAndCountAllCustomersController, findCustomerByCPFController } from "../use-cases";
 
 export async function customersRoutes(app: FastifyInstance) {
     app.post('/', async (req, res) => {
@@ -7,7 +7,7 @@ export async function customersRoutes(app: FastifyInstance) {
     })
 
     app.get('/', async (req, res) => {
-        return findAllCustomersController.handle(req, res)
+        return findAndCountAllCustomersController.handle(req, res)
     })
 
     app.get('/:cpf', async (req, res) => {

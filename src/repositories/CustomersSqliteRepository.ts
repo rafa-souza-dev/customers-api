@@ -35,14 +35,26 @@ export class CustomersSqliteRepository implements ICustomersRepository {
         return null
     }
 
-    public async findAll(): Promise<Customer[]> {
-        const customers = await knex('customers').select('*')
+    public async findAndCountAll(page: number, limit: number): Promise<{
+        count: number
+        results: Customer[]
+    }> {
+        const countQuery = await knex('customers').count()
+        const count = Number(countQuery[0]['count(*)'])
+        const offSet = (page - 1) * limit
 
-        return customers.map(customer => new Customer(
-            customer.name,
-            customer.cpf,
-            new Date(customer.birth_date),
-            customer.id
-        ))
+        const customers = await knex('customers').select('*')
+            .offset(offSet)
+            .limit(limit)
+
+        return {
+            count,
+            results: customers.map(customer => new Customer(
+                customer.name,
+                customer.cpf,
+                new Date(customer.birth_date),
+                customer.id
+            ))
+        }
     }
 }
