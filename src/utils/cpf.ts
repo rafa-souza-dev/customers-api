@@ -7,6 +7,17 @@ export function getCPFDigits(cpf: string): string {
     return cpf
 }
 
+export function applyCPFMask(cpf: string): string {
+    if (cpf.length !== 11) return ''
+
+    const maskedCPF = cpf.slice(0, 3) + '.' +
+        cpf.slice(3, 6) + '.' +
+        cpf.slice(6, 9) + '-' +
+        cpf.slice(9)
+
+    return maskedCPF
+}
+
 function validateCPFFormat(cpf: string): boolean {
     const cpfHasInvalidLength = cpf.length !== 14 && cpf.length !== 11
 
