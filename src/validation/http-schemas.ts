@@ -7,3 +7,7 @@ export const createCustomerBodySchema = z.object({
     name: z.string().min(2),
     birth_date: z.string().refine(validateBirthDate, { message: 'The date must have year, month and day mandatory' })
 })
+
+export const findCustomerByCPFParamsSchema = z.object({
+    cpf: z.string().refine(validateCPF, { message: 'The CPF entered is invalid.' }),
+})
