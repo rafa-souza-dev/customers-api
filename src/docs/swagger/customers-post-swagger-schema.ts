@@ -6,8 +6,14 @@ export const customersPostSwaggerSchema = {
           type: 'object',
           properties: {
             name: { type: 'string' },
-            cpf: { type: 'string' },
-            birth_date: { type: 'string' },
+            cpf: {
+              type: 'string',
+              description: 'You must enter a valid CPF. It can have mask, for example 995.368.440-52 or without mask 99536844052'
+            },
+            birth_date: {
+              type: 'string',
+              description: 'The birthday date needs to have year, month and day, so the standard format to inform this field is yyyy-MM-dd. Example: 2002-06-22'
+            },
           }
         },
         response: {
