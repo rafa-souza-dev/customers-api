@@ -10,6 +10,6 @@ export async function checkParamsFindCustomerByCPFIsValid(
     const isInvalidQueryParams = !safeParse.success
 
     if (isInvalidQueryParams) {
-        return res.status(422).send(safeParse.error.issues)
+        return res.status(422).send({ errors: safeParse.error.issues })
     }
 }

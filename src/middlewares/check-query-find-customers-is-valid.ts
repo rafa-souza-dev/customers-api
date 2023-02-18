@@ -10,6 +10,6 @@ export async function checkQueryFindCustomersIsValid(
     const isInvalidBody = !safeParse.success
 
     if (isInvalidBody) {
-        return res.status(422).send(safeParse.error.issues)
+        return res.status(422).send({ errors: safeParse.error.issues })
     }
 }
