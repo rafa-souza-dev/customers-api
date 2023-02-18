@@ -8,3 +8,6 @@
 **Vitest** - Ferramenta para criação de testes automatizados fortemente integrada ao TypeScript;
 **Zod** - Biblioteca de validação de dados fortemente integrada ao TypeScript;
 **Docker** - Gerenciador de *containers* para facilitar os processos de ambiente da aplicação.
+
+## Validação de CPF
+O código que criei para validar CPF está no arquivo ```src/utils/cpf.ts```, lá dividi as responsabilidades em funções (uma para validar o formato, outra para validar os dígitos no algoritmo...). Para ser algo 100% manual não usei Regex ou alguma biblioteca de terceiros.
