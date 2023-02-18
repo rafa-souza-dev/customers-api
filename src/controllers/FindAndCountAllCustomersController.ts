@@ -10,14 +10,6 @@ export class FindAndCountAllCustomersController {
     }
 
     async handle(req: FastifyRequest, res: FastifyReply): Promise<FastifyReply> {
-        const safeParse = findAndCountAllCustomersQueryParamsSchema.safeParse(req.query)
-
-        const isInvalidBody = !safeParse.success
-
-        if (isInvalidBody) {
-            return res.status(422).send(safeParse.error.issues)
-        }
-
         const { page=1, limit=10 } = findAndCountAllCustomersQueryParamsSchema.parse(req.query)
 
         const { count, results } = await this.findAndCountAllCustomersUseCase.handle(page, limit)

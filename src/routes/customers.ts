@@ -5,6 +5,7 @@ import { customersGetByCPFSwaggerSchema } from "../docs/swagger/customers-get-by
 import { customersGetSwaggerSchema } from "../docs/swagger/customers-get-swagger-schema";
 import { checkDataCreationCustomerIsValid } from "../middlewares/check-data-creation-customer-is-valid";
 import { checkParamsFindCustomerByCPFIsValid } from "../middlewares/check-params-find-customer-by-cpf-is-valid";
+import { checkQueryFindCustomersIsValid } from "../middlewares/check-query-find-customers-is-valid";
 
 export async function customersRoutes(app: FastifyInstance) {
     app.post('/', {
@@ -15,7 +16,8 @@ export async function customersRoutes(app: FastifyInstance) {
     })
 
     app.get('/', {
-        schema: customersGetSwaggerSchema
+        schema: customersGetSwaggerSchema,
+        preHandler: [checkQueryFindCustomersIsValid]
     }, async (req, res) => {
         return findAndCountAllCustomersController.handle(req, res)
     })
