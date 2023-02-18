@@ -10,14 +10,6 @@ export class CreateCustomerController {
     }
 
     async handle(req: FastifyRequest, res: FastifyReply): Promise<FastifyReply> {
-        const safeParse = createCustomerBodySchema.safeParse(req.body)
-
-        const isInvalidBody = !safeParse.success
-
-        if (isInvalidBody) {
-            return res.status(422).send({ errors: safeParse.error.issues })
-        }
-
         const { cpf, birth_date, name } = createCustomerBodySchema.parse(req.body)
 
         try {
