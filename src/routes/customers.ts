@@ -4,6 +4,7 @@ import { customersPostSwaggerSchema } from '../docs/swagger/customers-post-swagg
 import { customersGetByCPFSwaggerSchema } from "../docs/swagger/customers-get-by-cpf-swagger-schema";
 import { customersGetSwaggerSchema } from "../docs/swagger/customers-get-swagger-schema";
 import { checkDataCreationCustomerIsValid } from "../middlewares/check-data-creation-customer-is-valid";
+import { checkParamsFindCustomerByCPFIsValid } from "../middlewares/check-params-find-customer-by-cpf-is-valid";
 
 export async function customersRoutes(app: FastifyInstance) {
     app.post('/', {
@@ -20,7 +21,8 @@ export async function customersRoutes(app: FastifyInstance) {
     })
 
     app.get('/:cpf', {
-        schema: customersGetByCPFSwaggerSchema
+        schema: customersGetByCPFSwaggerSchema,
+        preHandler: [checkParamsFindCustomerByCPFIsValid]
     }, async (req, res) => {
         return findCustomerByCPFController.handle(req, res)
     })
