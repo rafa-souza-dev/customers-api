@@ -1,6 +1,6 @@
 export const customersGetSwaggerSchema = {
     schema: {
-        description: 'get customer by cpf',
+        description: 'get customers with pagination',
         tags: ['customer'],
         query: {
             type: 'object',

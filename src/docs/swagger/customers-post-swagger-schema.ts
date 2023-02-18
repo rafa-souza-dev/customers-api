@@ -19,10 +19,7 @@ export const customersPostSwaggerSchema = {
         response: {
           201: {
             description: 'Success response',
-            type: 'object',
-            properties: {
-              message: { type: 'string' }
-            }
+            type: 'null'
           },
           422: {
             description: 'Data validation error',

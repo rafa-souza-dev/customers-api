@@ -27,9 +27,7 @@ export class CreateCustomerController {
                 birth_date: birth_date
             })
 
-            return res.status(201).send({
-                message: 'success'
-            })
+            return res.status(201).send()
         } catch {
             return res.status(400).send({
                 message: 'A customer with this CPF already exists.' 
