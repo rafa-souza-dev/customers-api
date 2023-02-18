@@ -48,9 +48,6 @@ export const customersPostSwaggerSchema = {
             properties: {
               message: { type: 'string' }
             }
-          },
-          500: {
-            description: 'Unexpected error',
           }
         },
     }
