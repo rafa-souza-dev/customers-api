@@ -21,3 +21,9 @@ O código que criei para validar CPF está no arquivo ```src/utils/cpf.ts```, l�
 3 - Feito isso, basta abrir o terminal no caminho do projeto e executar ```docker-compose up --build -d```
 
 4 - Ao finalizar todos os *steps*, a aplicação estará hospedada no endereço http://localhost:8000 e um banco *sqlite* será criado dentro do *container*, já com as migrações feitas.
+
+## Como executar os testes automatizados usando Docker
+
+1 - Após ter hospedado a aplicação com docker, isso é possível.
+
+2 - No terminal, execute ```docker-compose exec app npm run test```
