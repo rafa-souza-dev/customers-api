@@ -8,11 +8,11 @@ export async function customersRoutes(app: FastifyInstance) {
         return createCustomerController.handle(req, res)
     })
 
-    app.get('/', customersGetByCPFSwaggerSchema, async (req, res) => {
+    app.get('/', async (req, res) => {
         return findAndCountAllCustomersController.handle(req, res)
     })
 
-    app.get('/:cpf', async (req, res) => {
+    app.get('/:cpf', customersGetByCPFSwaggerSchema, async (req, res) => {
         return findCustomerByCPFController.handle(req, res)
     })
 }
