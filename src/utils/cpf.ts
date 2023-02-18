@@ -92,14 +92,13 @@ function verifyAlgorithmCpf(cpfNumbers: number[]): boolean {
 }
 
 export function validateCPF(cpf: string): boolean {
-    let cpfArray: number[] = []
     const isValidCPFFormat = validateCPFFormat(cpf)
 
     if (isValidCPFFormat) {
-        cpfArray = convertCPFToArray(cpf)
+        const cpfArray = convertCPFToArray(cpf)
+        const isValidCPF = verifyAlgorithmCpf(cpfArray)
+        return isValidCPF
     }
 
-    const isValidCPF = verifyAlgorithmCpf(cpfArray)
-
-    return isValidCPF
+    return false
 }
