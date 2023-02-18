@@ -131,7 +131,7 @@ describe('customer search by cpf', () => {
             .expect(200)
     })
 
-    it('should not be possible to search for a user with a non-existent cpf', async () => {
+    it('should not be possible to search for a customer with a non-existent cpf', async () => {
         const maskedCPF = '111.444.777-35'
 
         await request(app.server)
@@ -149,7 +149,7 @@ describe('customer search by cpf', () => {
 })
 
 describe('customers listing', () => {
-    it('should be possible to list the users using pagination args', async () => {
+    it('should be possible to list the customers using pagination args', async () => {
         await request(app.server)
             .post('/customers')
             .send({
