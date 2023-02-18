@@ -15,7 +15,7 @@ export class CreateCustomerController {
         const isInvalidBody = !safeParse.success
 
         if (isInvalidBody) {
-            return res.status(422).send(safeParse.error.issues)
+            return res.status(422).send({ errors: safeParse.error.issues })
         }
 
         const { cpf, birth_date, name } = createCustomerBodySchema.parse(req.body)
@@ -27,7 +27,9 @@ export class CreateCustomerController {
                 birth_date: birth_date
             })
 
-            return res.status(201).send()
+            return res.status(201).send({
+                message: 'success'
+            })
         } catch {
             return res.status(400).send({
                 message: 'A customer with this CPF already exists.' 

@@ -6,7 +6,7 @@ import { validateIntNumberQueryParam } from '../utils/validate'
 export const createCustomerBodySchema = z.object({
     cpf: z.string().refine(validateCPF, { message: 'The CPF entered is invalid.' }),
     name: z.string().min(2),
-    birth_date: z.string().refine(validateBirthDate, { message: 'The date must have year, month and day mandatory' })
+    birth_date: z.string().refine(validateBirthDate, { message: 'The date must be in the format yyyy-MM-dd' })
 })
 
 export const findCustomerByCPFParamsSchema = z.object({
