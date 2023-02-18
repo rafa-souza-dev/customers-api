@@ -14,8 +14,8 @@ export class FindAndCountAllCustomersController {
 
         const { count, results } = await this.findAndCountAllCustomersUseCase.handle(page, limit)
         
-        const previous = this.previousPageUrlGenerator(page, limit, count)
-        const next = this.nextPageUrlGenerator(page, limit)
+        const previous = this.previousPageUrlGenerator(page, limit)
+        const next = this.nextPageUrlGenerator(page, limit, count)
 
         const data = {
             count,
@@ -29,7 +29,7 @@ export class FindAndCountAllCustomersController {
         return res.status(200).send(data)
     }
 
-    private nextPageUrlGenerator(page: number, limit: number) {
+    private previousPageUrlGenerator(page: number, limit: number) {
         const customersBaseHasPreviousPage = page > 1
 
         return customersBaseHasPreviousPage ?
@@ -37,7 +37,7 @@ export class FindAndCountAllCustomersController {
         null
     }
 
-    private previousPageUrlGenerator(page: number, limit: number, count: number) {
+    private nextPageUrlGenerator(page: number, limit: number, count: number) {
         const resultsCount = page * limit
         const customersBaseHasNextPage = resultsCount < count
 
