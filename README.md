@@ -28,3 +28,7 @@ O código que criei para validar CPF está no arquivo ```src/utils/cpf.ts```, l�
 1 - Após ter hospedado a aplicação com docker, isso é possível.
 
 2 - No terminal, execute ```docker-compose exec app npm run test```
+
+## Swagger-UI
+
+O projeto usa a interface swagger pra documentar suas rotas. O endereço de acesso é esse http://localhost:8000/documentation/
