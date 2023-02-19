@@ -7,7 +7,9 @@ async function setServerHost(server: string): Promise<void> {
     SERVER_HOST = server
 }
 
-app.listen({
-    host: env.HOST,
-    port: env.PORT,
-}).then(async (server) => await setServerHost(server))
+if (env.NODE_ENV !== 'test') {
+    app.listen({
+        host: env.HOST,
+        port: env.PORT,
+    }).then(async (server) => await setServerHost(server))
+}
