@@ -42,7 +42,7 @@ function validateCPFFormat(cpf: string): boolean {
     return true
 }
 
-function convertCPFToArray(cpf: string): number[] {
+function convertCPFToNumbersArray(cpf: string): number[] {
     const cpfDigits = getCPFDigits(cpf)
 
     const cpfDigitsArray = cpfDigits.split('')
@@ -52,10 +52,11 @@ function convertCPFToArray(cpf: string): number[] {
 
 function verifyAlgorithmCpf(cpfNumbers: number[]): boolean {
     let multiplier = 10
+    let cpfNumberAux: number[] = []
+
     const firstVerifyingDigit = cpfNumbers[9]
     const secondVerifyingDigit = cpfNumbers[10]
     const firstNineNumbers = cpfNumbers.slice(0, 9)
-    let cpfNumberAux: number[] = []
 
     firstNineNumbers.forEach(number => {
         cpfNumberAux.push(number * multiplier)
@@ -71,6 +72,7 @@ function verifyAlgorithmCpf(cpfNumbers: number[]): boolean {
 
     multiplier = 11
     cpfNumberAux = []
+
     const firstTenNumbers = [...firstNineNumbers, firstDigit]
 
     firstTenNumbers.forEach(number => {
@@ -95,7 +97,7 @@ export function validateCPF(cpf: string): boolean {
     const isValidCPFFormat = validateCPFFormat(cpf)
 
     if (isValidCPFFormat) {
-        const cpfArray = convertCPFToArray(cpf)
+        const cpfArray = convertCPFToNumbersArray(cpf)
         const isValidCPF = verifyAlgorithmCpf(cpfArray)
         return isValidCPF
     }
