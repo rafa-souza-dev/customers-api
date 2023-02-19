@@ -18,13 +18,13 @@
 **Sqlite** - Simples banco de dados relacional o qual não tem a necessidade de fazer autenticação, muito usado em etapas de desenvolvimento.
 
 ## Validação de CPF
-O código que criei para validar CPF está no arquivo ```src/utils/cpf.ts```, lá dividi as responsabilidades em funções (uma para validar o formato, outra para validar os dígitos no algoritmo...). Para ser algo 100% manual não usei Regex ou alguma biblioteca de terceiros.
+O código que criei para validar CPF está no arquivo ```src/utils/cpf.ts```, lá dividi as responsabilidades em funções (uma para validar o formato, outra para validar os dígitos no algoritmo...). Para ser algo 100% manual não usei Regex ou alguma biblioteca de terceiros. A principal função chamada é **validateCPF**, a qual chama outras necessárias.
 
 ## Como subir a aplicação usando Docker
 
 1 - Necessário ter *docker* e *docker-compose* instalados.
 
-2 - Crie um arquivo *.env* baseado no *.env.example* e um *.env.test* baseado no *.env.test.example*, ambos na raíz do projeto. Pode manter os mesmos valores das variáveis por enquanto.
+2 - Crie um arquivo *.env* baseado no *.env.example* e também um *.env.test* baseado no *.env.test.example*, ambos na raiz do projeto. Pode manter os mesmos valores das variáveis por enquanto.
 
 3 - A única mudança que precisa ser feita para subir usando o *Docker* é alterar o valor da variável *HOST* no arquivo *.env* para o nome do *container*, ou seja ```HOST="customers_api"```
 
@@ -36,7 +36,7 @@ O código que criei para validar CPF está no arquivo ```src/utils/cpf.ts```, l�
 
 ## Como executar os testes automatizados usando Docker
 
-1 - Após ter hospedado a aplicação com *docker*, isso é possível.
+1 - Após subir o *container* com *docker*, isso é possível.
 
 2 - No terminal, execute ```docker-compose exec app npm run test```
 
@@ -48,7 +48,7 @@ O projeto usa a interface swagger pra documentar suas rotas. O endereço de aces
 
 1 - Necessário ter instalado *node* na versão *latest*
 
-2 - Crie um arquivo *.env* baseado no *.env.example* e um *.env.test* baseado no *.env.test.example*, ambos na raíz do projeto. Pode manter os mesmos valores das variáveis.
+2 - Crie um arquivo *.env* baseado no *.env.example* e também um *.env.test* baseado no *.env.test.example*, ambos na raiz do projeto. Pode manter os mesmos valores das variáveis.
 
 3 - Instale as dependências executando ```npm install```
 
@@ -58,6 +58,6 @@ O projeto usa a interface swagger pra documentar suas rotas. O endereço de aces
 
 ## Como executar os testes automatizados usando NodeJS
 
-1 - Após ter hospedado a aplicação com *node*, isso é possível.
+1 - Após ter preparado o ambiente da aplicação com *node*, isso é possível.
 
 2 - No terminal, execute ```npm run test```
