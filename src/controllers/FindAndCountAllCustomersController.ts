@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { env } from "../env";
+import { SERVER_HOST } from "../server";
 import { FindAndCountAllCustomersUseCase } from "../use-cases/FindAndCountAllCustomersUseCase";
 import { findAndCountAllCustomersQueryParamsSchema } from "../validation/http-schemas";
 
@@ -34,7 +34,7 @@ export class FindAndCountAllCustomersController {
         const customersBaseHasPreviousPage = page > 1
 
         return customersBaseHasPreviousPage ?
-            `http://localhost:${env.PORT}/customers?page=${page - 1}&limit=${limit}` :
+            `${SERVER_HOST}/customers?page=${page - 1}&limit=${limit}` :
             null
     }
 
@@ -43,7 +43,7 @@ export class FindAndCountAllCustomersController {
         const customersBaseHasNextPage = resultsCount < count
 
         return customersBaseHasNextPage ?
-            `http://localhost:${env.PORT}/customers?page=${page + 1}&limit=${limit}` :
+            `${SERVER_HOST}/customers?page=${page + 1}&limit=${limit}` :
             null
     }
 }
