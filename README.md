@@ -15,13 +15,17 @@ O código que criei para validar CPF está no arquivo ```src/utils/cpf.ts```, l�
 
 ## Como subir a aplicação usando Docker
 
-1 - Crie um arquivo *.env* baseado no *.env.example* e um *.env.test* baseado no *.env.test.example*, ambos na raíz do projeto. Pode manter os mesmos valores das variáveis por enquanto.
+1 - Necessário ter *docker* e *docker-compose* instalados.
 
-2 - A única mudança que precisa ser feita para subir usando o *Docker* é alterar o valor da variável *HOST* no arquivo *.env* para o nome do *container*, ou seja ```HOST="customers_api"```
+2 - Crie um arquivo *.env* baseado no *.env.example* e um *.env.test* baseado no *.env.test.example*, ambos na raíz do projeto. Pode manter os mesmos valores das variáveis por enquanto.
 
-3 - Feito isso, basta abrir o terminal no caminho do projeto e executar ```docker-compose up --build -d```
+3 - A única mudança que precisa ser feita para subir usando o *Docker* é alterar o valor da variável *HOST* no arquivo *.env* para o nome do *container*, ou seja ```HOST="customers_api"```
 
-4 - Ao finalizar todos os *steps*, a aplicação estará hospedada no endereço http://localhost:8000 e um banco *sqlite* será criado dentro do *container*, já com as migrações feitas.
+4 - Feito isso, basta abrir o terminal no caminho do projeto e executar ```docker-compose up --build -d```
+
+5 - Ao finalizar todos os *steps*, a aplicação estará hospedada no endereço http://localhost:8000 e um banco *sqlite* será criado dentro do *container*, já com as migrações feitas.
+
+6 - Para ver logs execute ```docker-compose logs```
 
 ## Como executar os testes automatizados usando Docker
 
