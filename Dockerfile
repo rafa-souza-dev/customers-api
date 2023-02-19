@@ -12,6 +12,6 @@ COPY . .
 RUN npm run knex migrate:rollback --all
 RUN npm run knex migrate:latest
 
-EXPOSE 8000
+EXPOSE $PORT
 
 CMD [ "npm", "run", "dev" ]
