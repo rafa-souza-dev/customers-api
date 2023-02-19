@@ -9,6 +9,7 @@ RUN npm install
 
 COPY . .
 
+RUN npm run knex migrate:rollback --all
 RUN npm run knex migrate:latest
 
 EXPOSE 8000

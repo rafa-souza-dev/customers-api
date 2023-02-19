@@ -1,4 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
+import { env } from "../env";
 import { FindAndCountAllCustomersUseCase } from "../use-cases/FindAndCountAllCustomersUseCase";
 import { findAndCountAllCustomersQueryParamsSchema } from "../validation/http-schemas";
 
@@ -33,8 +34,8 @@ export class FindAndCountAllCustomersController {
         const customersBaseHasPreviousPage = page > 1
 
         return customersBaseHasPreviousPage ?
-        `http://localhost:8000/customers?page=${page - 1}&limit=${limit}` :
-        null
+            `http://localhost:${env.PORT}/customers?page=${page - 1}&limit=${limit}` :
+            null
     }
 
     private nextPageUrlGenerator(page: number, limit: number, count: number) {
@@ -42,7 +43,7 @@ export class FindAndCountAllCustomersController {
         const customersBaseHasNextPage = resultsCount < count
 
         return customersBaseHasNextPage ?
-        `http://localhost:8000/customers?page=${page + 1}&limit=${limit}` :
-        null
+            `http://localhost:${env.PORT}/customers?page=${page + 1}&limit=${limit}` :
+            null
     }
 }
