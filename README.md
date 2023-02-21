@@ -3,7 +3,7 @@
 ## Tecnologias Usadas
 **NodeJS** - Plataforma para rodar código JavaScript fora dos navegadores;
 
-**TypeScript** - Superset do JavaScript para adicionar tipagem dinâmica à linguagem;
+**TypeScript** - Superset do JavaScript para adicionar tipagem estática à linguagem;
 
 **Fastify** - Microframework para facilitar o desenvolvimento de REST API's;
 
