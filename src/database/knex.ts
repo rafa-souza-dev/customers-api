@@ -12,6 +12,7 @@ export const config: Knex.Config = {
     password: env.DB_PASSWORD,
     database: env.DB_NAME
   },
+  useNullAsDefault: true,
   migrations: {
     extension: 'ts',
     directory: './src/database/migrations',
