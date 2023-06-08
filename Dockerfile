@@ -1,16 +1,17 @@
 FROM node:latest
 
-WORKDIR /usr/app
+WORKDIR /app
 
-COPY package.json ./
-COPY tsconfig.json ./
+COPY package.json .
+COPY tsconfig.json .
 
 RUN npm install
 
-COPY . .
+COPY src/database/migrations .
 
-RUN npm run knex migrate:rollback --all
 RUN npm run knex migrate:latest
+
+COPY . .
 
 EXPOSE $PORT
 
