@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:16-alpine
 
 WORKDIR /app
 
@@ -7,12 +7,11 @@ COPY tsconfig.json .
 
 RUN npm install
 
-COPY src/database/migrations .
+COPY . .
 
 RUN npm run knex migrate:latest
-
-COPY . .
+RUN npm run build
 
 EXPOSE $PORT
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "run", "start" ]

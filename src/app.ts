@@ -1,4 +1,4 @@
-import fastify from "fastify";
+import fastify, { FastifyReply, FastifyRequest } from "fastify";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import { env } from "./env";
@@ -37,6 +37,10 @@ app.register(fastifySwagger, {
 })
 
 app.register(fastifySwaggerUi)
+
+app.get('/', (_: FastifyRequest, res: FastifyReply) => {
+  return res.status(200).send({ message: "teste" })
+})
 
 app.register(customersRoutes, {
     prefix: '/customers'
