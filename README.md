@@ -20,26 +20,6 @@
 ## Validação de CPF
 O código que criei para validar CPF está no arquivo ```src/utils/cpf.ts```, lá dividi as responsabilidades em funções (uma para validar o formato, outra para validar os dígitos no algoritmo...). Para ser algo 100% manual não usei Regex ou alguma biblioteca de terceiros. A principal função chamada é **validateCPF**, a qual chama outras necessárias.
 
-## Como subir a aplicação usando Docker
-
-1 - Necessário ter *docker* e *docker-compose* instalados.
-
-2 - Crie um arquivo *.env* baseado no *.env.example* e também um *.env.test* baseado no *.env.test.example*, ambos na raiz do projeto. Pode manter os mesmos valores das variáveis por enquanto.
-
-3 - A única mudança que precisa ser feita para subir usando o *Docker* é alterar o valor da variável *HOST* no arquivo *.env* para o nome do *container*, ou seja ```HOST="customers_api"```
-
-4 - Feito isso, basta abrir o terminal no caminho do projeto e executar ```docker-compose up --build -d```
-
-5 - Ao finalizar todos os *steps*, a aplicação estará hospedada no endereço http://localhost:8000 e um banco *sqlite* será criado dentro do *container*, já com as migrações feitas.
-
-6 - Para ver logs execute ```docker-compose logs```
-
-## Como executar os testes automatizados usando Docker
-
-1 - Após subir o *container* com *docker*, isso é possível.
-
-2 - No terminal, execute ```docker-compose exec app npm run test```
-
 ## Swagger-UI
 
 O projeto usa a interface swagger pra documentar suas rotas. O endereço de acesso é esse http://localhost:8000/documentation/
